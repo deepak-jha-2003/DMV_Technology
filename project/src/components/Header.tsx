@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Menu, X, Code, Smartphone, Globe, Shield } from 'lucide-react';
+import LoginSignupModal from './LoginSignupModal';
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -37,7 +40,15 @@ const Header = () => {
             <a href="#contact" className="text-gray-700 hover:text-sky-600 transition-colors font-medium">
               Contact
             </a>
+            <button
+              onClick={() => setShowLoginModal(true)}
+              className="text-gray-700 hover:text-sky-600 transition-colors font-medium"
+            >
+              Login
+            </button>
           </nav>
+          <LoginSignupModal show={showLoginModal} onClose={() => setShowLoginModal(false)} />
+
 
           {/* CTA Button */}
           <div className="hidden md:flex">
@@ -94,6 +105,12 @@ const Header = () => {
               >
                 Contact
               </a>
+              <button
+                onClick={() => setShowLoginModal(true)}
+                className="text-gray-700 hover:text-sky-600 transition-colors font-medium px-4 py-2 rounded-lg hover:bg-sky-50 text-left"
+              >
+                Login
+              </button>
               <button className="bg-gradient-to-r from-sky-500 to-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:from-sky-600 hover:to-blue-700 transition-all duration-200 shadow-lg mx-4">
                 Get Started
               </button>
